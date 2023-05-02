@@ -4,7 +4,6 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
-    console.log(user?.emailVerified);
     const location = useLocation()
     if (loading) {
         return (
@@ -17,7 +16,7 @@ const PrivateRoute = ({ children }) => {
             </div>
         )
     }
-    if (user?.emailVerified) {
+    if (user) {
         return children
     }
     return <Navigate to="/join" state={{ from: location }} replace={true}></Navigate>

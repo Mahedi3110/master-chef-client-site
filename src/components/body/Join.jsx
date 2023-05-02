@@ -126,8 +126,8 @@ const Join = () => {
                 console.log(result.user)
                 const logInUser = result.user;
                 if (logInUser.emailVerified) {
-                    setLoading(false)
                     navigate(from, { replace: true })
+                    setLoading(false)
                 }
                 else {
                     plsVerify()
@@ -138,6 +138,7 @@ const Join = () => {
                 console.log(error.message);
                 wrongPass()
                 setBorder3(false)
+                setLoading(false)
             })
     }
     const recoverPassword = (event) => {
@@ -184,16 +185,16 @@ const Join = () => {
                                     <label htmlFor="my-modal-4" className="label label-text-alt link link-hover">Forgot password?</label>
                                 </div>
                                 <div className="form-control mt-6 flex flex-col items-center">
-                                    <button type='submit' className="btn w-full">Login</button>
-                                    <p className='ml-2'>Don't have an account? <label htmlFor="my-modal-3" onClick={okay} className="btn modal-button normal-case btn-link">Register here.</label></p>
+                                    <button type='submit' className="btn w-full bg-teal-700 hover:bg-teal-950 normal-case font-bold">Login</button>
+                                    <p className='ml-2'>Don't have an account? <label htmlFor="my-modal-3" onClick={okay} className="btn modal-button normal-case text-teal-800 hover:text-teal-950 btn-link">Register here.</label></p>
                                 </div>
                             </form>
                             <div className='mt-0 flex flex-col items-center'>
                                 <h1>You can also login with this</h1>
                                 <div className='mt-2'>
-                                    <button onClick={handleGoogleSignIn} className='btn bg-transparent text-black border-0 hover:bg-transparent'><i className="fa-brands fa-google text-3xl"></i></button>
-                                    <button onClick={handleFacebookSignIn} className='btn bg-transparent text-black border-0 hover:bg-transparent'><i className="fa-brands fa-facebook text-3xl"></i></button>
-                                    <button onClick={handleGithubSignIn} className='btn bg-transparent text-black border-0 hover:bg-transparent'><i className="fa-brands fa-github text-3xl"></i></button>
+                                    <button onClick={handleGoogleSignIn} className='btn bg-transparent border-0 hover:bg-transparent text-teal-800 hover:text-teal-950'><i className="fa-brands fa-google text-3xl"></i></button>
+                                    <button onClick={handleFacebookSignIn} className='btn bg-transparent text-teal-800 hover:text-teal-950 border-0 hover:bg-transparent'><i className="fa-brands fa-facebook text-3xl"></i></button>
+                                    <button onClick={handleGithubSignIn} className='btn bg-transparent text-teal-800 hover:text-teal-950 border-0 hover:bg-transparent'><i className="fa-brands fa-github text-3xl"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -208,10 +209,10 @@ const Join = () => {
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
                 <div className={clicked2 ? "modal-box relative max-w-4xl" : "modal-box relative max-w-md"}>
-                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2 bg-teal-700 hover:bg-teal-950">✕</label>
                     {
                         clicked2 ?
-                            <div className="hero bg-base-200 w-full">
+                            <div className="hero bg-teal-50 rounded-xl w-full">
                                 <div className="flex-col lg:flex-row-reverse w-full px-5">
                                     <div className="flex-shrink-0 w-full">
                                         <form onSubmit={handleSignUp}>
@@ -272,15 +273,15 @@ const Join = () => {
                                                 </div>
                                             </div>
                                             <div className="form-control mt-6 modal-action">
-                                                <button className="btn w-3/5 mx-auto">Sign Up</button>
+                                                <button className="btn w-3/5 mx-auto bg-teal-700 hover:bg-teal-950">Sign Up</button>
                                             </div>
                                         </form>
                                         <div className='mt-5 flex flex-col items-center'>
                                             <h1>You can also sign up with this</h1>
                                             <div className='mt-2'>
-                                                <button onClick={handleGoogleSignIn} className='btn bg-transparent text-black border-0 hover:bg-transparent'><i className="fa-brands fa-google text-3xl"></i></button>
-                                                <button onClick={handleFacebookSignIn} className='btn bg-transparent text-black border-0 hover:bg-transparent'><i className="fa-brands fa-facebook text-3xl"></i></button>
-                                                <button onClick={handleGithubSignIn} className='btn bg-transparent text-black border-0 hover:bg-transparent'><i className="fa-brands fa-github text-3xl"></i></button>
+                                                <button onClick={handleGoogleSignIn} className='btn bg-transparent text-teal-800 hover:text-teal-950 border-0 hover:bg-transparent'><i className="fa-brands fa-google text-3xl"></i></button>
+                                                <button onClick={handleFacebookSignIn} className='btn bg-transparent text-teal-800 hover:text-teal-950 border-0 hover:bg-transparent'><i className="fa-brands fa-facebook text-3xl"></i></button>
+                                                <button onClick={handleGithubSignIn} className='btn bg-transparent text-teal-800 hover:text-teal-950 border-0 hover:bg-transparent'><i className="fa-brands fa-github text-3xl"></i></button>
                                             </div>
                                         </div>
                                     </div>

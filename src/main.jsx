@@ -11,6 +11,8 @@ import './index.css'
 import NotFound from './components/body/NotFound';
 import Join from './components/body/Join';
 import AuthProvider from './provider/AuthProvider';
+import Home from './components/body/home/Home';
+import Blog from './components/body/Blog'
 
 const router = createBrowserRouter([
   {
@@ -18,8 +20,16 @@ const router = createBrowserRouter([
     element: <App></App>,
     children: [
       {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
         path: "/home",
-        element: <App></App>
+        element: <Home></Home>
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>
       },
       {
         path: "/join",
