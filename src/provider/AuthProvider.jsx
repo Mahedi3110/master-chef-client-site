@@ -13,15 +13,15 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
     const joinByGoogle = () => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithPopup(auth, google)
     }
     const joinByFacebook = () => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithPopup(auth, facebook)
     }
     const joinByGithub = () => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithPopup(auth, github)
     }
     const createUser = (email, password) => {

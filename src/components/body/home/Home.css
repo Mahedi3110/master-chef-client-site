@@ -3,16 +3,18 @@
 }
 
 .bgImg {
-    background: rgba(0, 0, 0, 0.8)url('https://as1.ftcdn.net/v2/jpg/03/11/19/38/1000_F_311193874_Vkfumsm1p90oM8Ofcm0X7kTwgZ6pIOnd.jpg');
+    background: rgba(0, 30, 30, 0.8)url('https://as1.ftcdn.net/v2/jpg/03/11/19/38/1000_F_311193874_Vkfumsm1p90oM8Ofcm0X7kTwgZ6pIOnd.jpg');
     background-size: cover;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-blend-mode: darken;
     background-attachment: fixed;
 }
 
 .bgImg2 {
-    background: rgba(0, 0, 0, 0.8)url('https://as1.ftcdn.net/v2/jpg/01/28/52/18/1000_F_128521888_fmzQgeBbrnCpAS7A4wKPKbu0VDikCeBh.jpg');
+    background: rgba(0, 30, 30, 0.8)url('https://as1.ftcdn.net/v2/jpg/03/11/19/52/1000_F_311195222_xnfcw8CLos1I9DpiGaAlZcdkTV4UQN2D.jpg');
     background-size: cover;
+    background-position: 0 30%;
     background-repeat: no-repeat;
     background-blend-mode: darken;
     background-attachment: fixed;

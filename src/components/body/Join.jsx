@@ -45,9 +45,11 @@ const Join = () => {
             .then(result => {
                 console.log(result.user);
                 navigate(from, { replace: true })
+                setLoading(false)
             })
             .catch(error => {
                 console.log(error.message);
+                setLoading(false)
             })
     }
     const handleGithubSignIn = () => {
@@ -55,9 +57,11 @@ const Join = () => {
             .then(result => {
                 console.log(result.user)
                 navigate(from, { replace: true })
+                setLoading(false)
             })
             .catch(error => {
                 console.log(error.message);
+                setLoading(false)
             })
     }
     const handleFacebookSignIn = () => {
@@ -65,9 +69,11 @@ const Join = () => {
             .then(result => {
                 console.log(result.user)
                 navigate(from, { replace: true })
+                setLoading(false)
             })
             .catch(error => {
                 console.log(error.message);
+                setLoading(false)
             })
     }
     const handleSignUp = (event) => {
