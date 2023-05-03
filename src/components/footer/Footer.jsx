@@ -11,7 +11,7 @@ const Footer = () => {
                         right fit for their needs.</p>
                     <img src="../../public/Icons/Group 9969.png" alt="" />
                 </div>
-                <div className='ml-5'>
+                <div className='md:ml-5 ml-0'>
                     <h1 className='text-lg font-bold mb-4'>About Us</h1>
                     <p className="text-gray-400 mb-2">Chef</p>
                     <p className="text-gray-400 mb-2">Work</p>
