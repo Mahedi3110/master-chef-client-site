@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import { Spinner, Tooltip } from 'flowbite-react';
 
 const Header = () => {
     const { user, loading, logOut } = useContext(AuthContext)
+    const pic = user?.photoURL?.length;
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -16,24 +18,32 @@ const Header = () => {
     return (
         <div>
             <nav className="bg-teal-50 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 shadow-xl shadow-gray">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between md:mx-10 mx-5 md:py-2 py-4">
+                <div className="max-w-screen-xl flex flex-wrap justify-between md:mx-10 mx-5 h-20 items-center">
                     <Link to="/" className="flex items-center md:p-2">
                         <img src="https://www.linkpicture.com/q/favpng_masterchef-logo-television-show-wordmark.png" className="h-8 mr-1" alt="Job Hunter Logo" />
                         <span className="self-center text-2xl font-bold whitespace-nowrap text-teal-600 dark:text-white">Master Chef</span>
                     </Link>
-                    <div className="flex md:order-2 md:p-2">
+                    <div className="flex md:order-2">
 
-                        {loading ? <p className='mx-3 my-3 text-teal-700'>Loading...</p> :
+                        {loading ?
+                            <Spinner className='mt-3 mb-2 mr-16 ml-9' aria-label="Default status example" />
+                            :
                             user ? <div className='flex items-center'>
-                                <NavLink className={({ isActive }) => isActive ? 'text-blue-700 mx-5' : 'mx-5 hover:text-blue-500'} to="/profile">
+                                <NavLink className={({ isActive }) => isActive ? 'text-blue-700 mx-7 mt-1' : 'my-1 mx-7 hover:text-blue-500'} to="/profile">
                                     {
-                                        user.photoURL.length > 12 ?
-                                            <img className='w-10 h-10 rounded-full border-2 border-gray-400' src={user.photoURL} alt='User' />
+                                        pic > 12 ?
+                                            <Tooltip content={user.displayName}>
+                                                <img className='w-10 h-10 rounded-full border-2 border-gray-400' src={user.photoURL} alt='User' />
+                                            </Tooltip>
                                             :
-                                            <img className='w-10 h-10 rounded-full border-2 border-gray-400' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' alt='User' />
+                                            <Tooltip content={user.displayName}>
+                                                <img className='w-10 h-10 rounded-full border-2 border-gray-400' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' alt='User' />
+                                            </Tooltip>
                                     }
                                 </NavLink>
-                                <i onClick={handleLogOut} className="fa-solid fa-right-from-bracket text-3xl cursor-pointer text-teal-700 hover:text-teal-900"></i>
+                                <Tooltip content='Log out'>
+                                    <i onClick={handleLogOut} className="fa-solid fa-right-from-bracket text-3xl cursor-pointer text-teal-700 hover:text-teal-900"></i>
+                                </Tooltip>
                             </div> :
                                 <NavLink to="/join" className="btn bg-teal-600 hover:bg-teal-800 normal-case border-0 font-bold rounded-lg px-12 text-center mr-3 md:mr-0 text-md">Join</NavLink>
                         }
@@ -52,7 +62,7 @@ const Header = () => {
                                 <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/statistics">Statistics</NavLink>
                             </li>
                             <li>
-                                <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/applied_jobs">Applied Jobs</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/about">About</NavLink>
                             </li>
                             <li>
                                 <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/blog">Blog</NavLink>

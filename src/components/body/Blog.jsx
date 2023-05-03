@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className="flex flex-col flex-wrap text-justify mx-32 mt-36">
+        <div className="flex flex-col flex-wrap text-justify mx-32 mt-36 mb-28">
             <h1 className="text-3xl font-bold text-center underline">Question and Answer</h1>
             <div className="mt-16 mb-4">
                 <div className="mb-1 flex">

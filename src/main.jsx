@@ -13,6 +13,8 @@ import Join from './components/body/Join';
 import AuthProvider from './provider/AuthProvider';
 import Home from './components/body/home/Home';
 import Blog from './components/body/Blog'
+import About from './components/body/About';
+import HireChef from './components/body/HireChef'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
+        path: "/about",
+        element: <About></About>
+      },
+      {
         path: "/blog",
         element: <Blog></Blog>
       },
@@ -38,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <PrivateRoute><Profile></Profile></PrivateRoute>
+      },
+      {
+        path: "/hireChef",
+        element: <PrivateRoute><HireChef></HireChef></PrivateRoute>
       }
     ]
   },

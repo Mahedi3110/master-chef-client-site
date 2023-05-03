@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { updateProfile } from "firebase/auth";
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { Checkbox } from 'flowbite-react';
 
 const Join = () => {
     const { joinByFacebook, joinByGithub, joinByGoogle, logIn, createUser, mailVerification, resetPassword, setLoading } = useContext(AuthContext)
@@ -11,7 +12,8 @@ const Join = () => {
     const passError = () => toast("Confirm password dosen't match.");
     const exist = () => toast("This email address is already exist.");
     const strongPass = () => toast("Please input a strong password.");
-    const wrongPass = () => toast("Wrong password. Please try again.");
+    const sixPass = () => toast("Password can't be less than six digit.");
+    const wrongIDPass = () => toast("Wrong ID password. Please try again.");
     const plsVerify = () => toast(<p className='text-center'>Your email is not verified. Please verify your email address first.</p>);
 
     const navigate = useNavigate()
@@ -26,19 +28,31 @@ const Join = () => {
     const [border1, setBorder1] = useState(true)
     const [border2, setBorder2] = useState(true)
     const [border3, setBorder3] = useState(true)
+    const [desable, setDesable] = useState(true)
 
-    const passBlur1 = (event) => {
-        const pass = event.target.value;
-        if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(pass)) {
-            strongPass()
-            setBorder1(false)
-            return;
-        }
-        else {
-            setBorder1(true)
-            return
-        }
+    const check = () => {
+        setDesable(!desable)
     }
+
+    // const passBlur1 = (event) => {
+    //     const pass = event.target.value;
+    //     if (pass.length >= 6) {
+    //         if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(pass)) {
+    //             strongPass()
+    //             setBorder1(false)
+    //             return;
+    //         }
+    //         else {
+    //             setBorder1(true)
+    //             return
+    //         }
+    //     }
+    //     else {
+    //         setBorder1(false)
+    //         sixPass()
+    //         return
+    //     }
+    // }
 
     const handleGoogleSignIn = () => {
         joinByGoogle()
@@ -84,6 +98,18 @@ const Join = () => {
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
         const fullName = event.target.firstName.value + ' ' + event.target.lastName.value;
+        const pass = password.length;
+        if (pass < 6) {
+            setBorder1(false)
+            sixPass()
+            return
+        }
+        if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)) {
+            strongPass()
+            setBorder1(false)
+            return;
+        }
+        setBorder1(true)
         if (confirmPassword !== password) {
             passError()
             setBorder2(false)
@@ -125,7 +151,7 @@ const Join = () => {
             })
             .catch(error => {
                 console.log(error.message);
-                wrongPass()
+                wrongIDPass()
                 setBorder3(false)
                 setLoading(false)
             })
@@ -147,9 +173,9 @@ const Join = () => {
         setClicked2(true)
     }
     return (
-        <div className='mt-28'>
+        <div className='mt-32 mb-28'>
             <div className="hero min-h-80">
-                <div className="hero-content flex-col lg:flex-row-reverse pt-0 w-4/12">
+                <div className="hero-content flex-col lg:flex-row-reverse pt-0 md:w-4/12 w-10/12">
                     <div className="card flex-shrink-0 w-full shadow-2xl">
                         <div className="card-body">
                             <form onSubmit={handleLogin}>
@@ -206,7 +232,7 @@ const Join = () => {
                                     <div className="flex-shrink-0 w-full">
                                         <form onSubmit={handleSignUp}>
                                             <div className='md:grid-cols-2 grid-cols-1 grid'>
-                                                <div className='mr-3'>
+                                                <div className='md:mr-3 mr-0'>
                                                     <div className="form-control">
                                                         <label className="label">
                                                             <span className="label-text">First Name</span>
@@ -226,7 +252,7 @@ const Join = () => {
                                                         <input type="img" placeholder="image url" name='image' className="input input-bordered pt-2 pl-2" required />
                                                     </div>
                                                 </div>
-                                                <div className='ml-3'>
+                                                <div className='md:ml-3 ml-0'>
                                                     <div className="form-control">
                                                         <label className="label">
                                                             <span className="label-text">Email</span>
@@ -238,7 +264,7 @@ const Join = () => {
                                                             <span className="label-text">Password</span>
                                                         </label>
                                                         <div className='relative'>
-                                                            <input onBlur={passBlur1} type={showPass2 ? 'text' : 'password'} placeholder="password" name='password' className={border1 ? "input input-bordered w-full border-gray-300" : "input input-bordered w-full border-red-700"} required />
+                                                            <input type={showPass2 ? 'text' : 'password'} placeholder="password" name='password' className={border1 ? "input input-bordered w-full border-gray-300" : "input input-bordered w-full border-red-700"} required />
                                                             <div className='absolute top-3 right-3'>
                                                                 {
                                                                     showPass2 ? <i onClick={() => setShowPass2(!showPass2)} className="fa-regular fa-eye cursor-pointer"></i> : <i onClick={() => setShowPass2(!showPass2)} className="fa-regular fa-eye-slash cursor-pointer"></i>
@@ -261,11 +287,20 @@ const Join = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="form-control mt-6 modal-action">
-                                                <button className="btn w-3/5 mx-auto bg-teal-700 hover:bg-teal-950">Sign Up</button>
+                                            <div className='flex justify-center mt-3'>
+                                                <input onChange={check} className='mt-4 rounded-sm mr-2' type="checkbox" />
+                                                <p>Accept our<Link to='/about' className='btn btn-link -ml-3 text-teal-600'>terms and conditions</Link></p>
+                                            </div>
+                                            <div className="form-control mt-3 modal-action">
+                                                {
+                                                    desable ?
+                                                        <button className="btn w-3/5 mx-auto bg-teal-700 hover:bg-teal-950" disabled>Sign Up</button>
+                                                        :
+                                                        <button className="btn w-3/5 mx-auto bg-teal-700 hover:bg-teal-950">Sign Up</button>
+                                                }
                                             </div>
                                         </form>
-                                        <div className='mt-5 flex flex-col items-center'>
+                                        <div className='mt-5 mb-2 flex flex-col items-center'>
                                             <h1>You can also sign up with this</h1>
                                             <div className='mt-2'>
                                                 <button onClick={handleGoogleSignIn} className='btn bg-transparent text-teal-800 hover:text-teal-950 border-0 hover:bg-transparent'><i className="fa-brands fa-google text-3xl"></i></button>
