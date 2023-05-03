@@ -24,8 +24,14 @@ const Header = () => {
                     <div className="flex md:order-2 md:p-2">
 
                         {loading ? <p className='mx-3 my-3'>Loading...</p> :
-                            user?.emailVerified ? <div className='flex items-center'>
-                                <NavLink className={({ isActive }) => isActive ? 'text-blue-700 mx-5' : 'mx-5 hover:text-blue-500'} to="/profile">Profile</NavLink>
+                            user ? <div className='flex items-center'>
+                                <NavLink className={({ isActive }) => isActive ? 'text-blue-700 mx-5' : 'mx-5 hover:text-blue-500'} to="/profile">
+                                    <div className='w-10 h-10 rounded-full border-2 boder-black overflow-hidden'>
+                                        {
+                                            user.photoURL ? <img className='w-10 rounded-full' src={user.photoURL} alt='' /> : <img className='w-10 rounded-full' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" />
+                                        }
+                                    </div>
+                                </NavLink>
                                 <i onClick={handleLogOut} className="fa-solid fa-right-from-bracket text-3xl cursor-pointer"></i>
                             </div> :
                                 <NavLink to="/join" className="btn bg-teal-700 hover:bg-teal-950 normal-case border-0 font-bold rounded-lg px-10 text-center mr-3 md:mr-0 text-md">Join</NavLink>

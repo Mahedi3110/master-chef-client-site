@@ -89,19 +89,8 @@ const Join = () => {
                 // if (logInUser) {
                 updateProfile(logInUser, { displayName: fullName, photoURL: photo })
                     .then(() => {
-                        console.log('user name updated');
-                        if (!logInUser.emailVerified) {
-                            mailVerification(logInUser)
-                                .then(result => {
-                                    // verify()
-                                    setLoading(false)
-                                    setClicked2(false)
-                                })
-                        }
-                        else {
-                            setLoading(false)
-                            navigate(from, { replace: true })
-                        }
+                        setLoading(false)
+                        navigate(from, { replace: true })
                     })
                     .catch(error => {
                         exist()
@@ -125,14 +114,8 @@ const Join = () => {
             .then(result => {
                 console.log(result.user)
                 const logInUser = result.user;
-                if (logInUser.emailVerified) {
-                    navigate(from, { replace: true })
-                    setLoading(false)
-                }
-                else {
-                    plsVerify()
-                    setLoading(false)
-                }
+                navigate(from, { replace: true })
+                setLoading(false)
             })
             .catch(error => {
                 console.log(error.message);
