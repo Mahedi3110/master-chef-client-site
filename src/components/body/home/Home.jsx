@@ -13,7 +13,6 @@ const Home = () => {
             const res = await fetch(`https://chef-server-rouge.vercel.app/allChef`);
             const data = await res.json();
             setChefData(data);
-            console.log(data);
         }
         fetchFunction();
     }, [])
