@@ -59,7 +59,7 @@ const Header = () => {
                                 <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/">Home</NavLink>
                             </li>
                             <li>
-                                <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/statistics">Statistics</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/hireChef">Hire Chef</NavLink>
                             </li>
                             <li>
                                 <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/about">About</NavLink>

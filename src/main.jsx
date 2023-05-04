@@ -15,6 +15,7 @@ import Home from './components/body/home/Home';
 import Blog from './components/body/Blog'
 import About from './components/body/About';
 import HireChef from './components/body/HireChef'
+import ChefRecipes from './components/body/ChefRecipes'
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
       {
         path: "/hireChef",
         element: <PrivateRoute><HireChef></HireChef></PrivateRoute>
+      },
+      {
+        path: "/chefRecipes/:id",
+        element: <PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://chef-server-rouge.vercel.app/chef/${params.id}`)
       }
     ]
   },

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { FaBirthdayCake, FaThumbsUp } from "react-icons/fa";
-import AllChef from './allChef/AllChef'
 import { GiRingBox, GiGlassCelebration, GiCook, GiHotMeal } from "react-icons/gi";
+import Chef from './chef/Chef'
 import './Home.css'
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-    const [chef, setChef] = useState([])
+    const [chefData, setChefData] = useState([])
     useEffect(() => {
         const fetchFunction = async () => {
             const res = await fetch(`https://chef-server-rouge.vercel.app/allChef`);
             const data = await res.json();
-            setChef(data);
+            setChefData(data);
+            console.log(data);
         }
         fetchFunction();
     }, [])
@@ -35,11 +36,11 @@ const Home = () => {
                 <p className='mt-3 text-gray-500'>Discover the world's top chefs and their signature dishes, from Massimo Bottura's contemporary Italian cuisine to <br /> Dominique Crenn's inventive French fare. Prepare to be amazed and delighted.</p>
                 <div className='grid md:grid-cols-3 grid-cols-1 gap-10 mt-16'>
                     {
-                        chef.map(datas =>
-                            <AllChef
+                        chefData.map(datas =>
+                            <Chef
                                 key={datas._id}
                                 data={datas}
-                            ></AllChef>)
+                            ></Chef>)
                     }
                 </div>
             </div>
