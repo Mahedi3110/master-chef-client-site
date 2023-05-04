@@ -42,7 +42,7 @@ const Header = () => {
                                     }
                                 </NavLink>
                                 <Tooltip content='Log out'>
-                                    <i onClick={handleLogOut} className="fa-solid fa-right-from-bracket text-3xl cursor-pointer text-teal-700 hover:text-teal-900"></i>
+                                    <i onClick={handleLogOut} className="fa-solid fa-right-from-bracket text-3xl cursor-pointer text-teal-700 hover:text-teal-900 mr-4"></i>
                                 </Tooltip>
                             </div> :
                                 <NavLink to="/join" className="btn bg-teal-600 hover:bg-teal-800 normal-case border-0 font-bold rounded-lg px-12 text-center mr-3 md:mr-0 text-md">Join</NavLink>
@@ -54,7 +54,7 @@ const Header = () => {
                         </button>
                     </div>
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 md:p-2" id="navbar-sticky">
-                        <ul className="flex flex-col p-4 md:p-0 font-medium border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className="flex bg-teal-50 flex-col p-4 md:p-0 font-medium border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             <li>
                                 <NavLink className={({ isActive }) => isActive ? 'text-teal-600 mx-5 font-bold border-b-2 border-teal-600' : 'mx-5 hover:text-teal-600 hover:border-b-2 hover:border-teal-600'} to="/">Home</NavLink>
                             </li>

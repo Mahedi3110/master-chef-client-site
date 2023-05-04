@@ -7,37 +7,45 @@ const Blog = () => {
             <div className="mt-16 mb-4">
                 <div className="mb-1 flex">
                     <h1 className="text-xl font-bold mr-3">Q1.</h1>
-                    <h1 className="text-xl font-bold">When should we use context API?</h1>
+                    <h1 className="text-xl font-bold">Tell us the differences between uncontrolled and controlled components.</h1>
                 </div>
                 <div>
                     <div className="flex">
                         <p className="font-bold mr-2">Ans:</p>
-                        <p className="text-justify">Context API in React should be used when you need to pass data or state down to multiple levels of child components
-                            without having to explicitly pass the data through each component as a prop. It is especially useful in larger applications where there are many nested components that need access to the same data.</p>
+                        <p className="text-justify">In according to React, uncontrolled and controlled components refer to two different ways of managing form data and user input in a React application. Controlled components refer to components that have their state and behavior controlled by the parent component and uncontrolled components refer to components that manage their own state internally.</p>
                     </div>
                 </div>
-                <div className="mt-4 mb-4">
+                <div className="mt-10 mb-4">
                     <div className="mb-1 flex">
                         <h1 className="text-xl font-bold mr-3">Q2.</h1>
-                        <h1 className="text-xl font-bold">What is custom hook?</h1>
+                        <h1 className="text-xl font-bold">How to validate React props using PropTypes?</h1>
                     </div>
                     <div className="flex">
                         <p className="font-bold mr-3">Ans:</p>
-                        <p className="text-justify">There are many kind of build in hook in react. These hooks are used for different type of word. But react has some custom hook features also. Custom hooks are useful when you have complex logic that needs to be reused across multiple components. By creating a
-                            custom hook, you can extract that logic into a separate function, and then use that function in any component that needs
-                            it.</p>
+                        <p className="text-justify">In React, you can use PropTypes to validate the props that are passed down to a component. PropTypes is a type-checking library that helps you ensure that the data passed to your component is of the correct type. PropTypes is a library that can be used to validate React props.</p>
                     </div>
                 </div>
-                <div className="mt-4">
+                <div className="mt-10">
                     <div className="mb-1 flex">
                         <h1 className="text-xl font-bold mr-3">Q3.</h1>
-                        <h1 className="text-xl font-bold">What is useRef??</h1>
+                        <h1 className="text-xl font-bold">Tell us the difference between nodejs and express js</h1>
                     </div>
                     <div>
                         <div className="flex">
                             <p className="font-bold mr-3">Ans:</p>
-                            <p className="text-justify">useRef is a built-in React hook that accepts one argument as the initial value and returns a reference. useRef can be used to store and access values that are associated with the
-                                component but should not trigger a re-render.</p>
+                            <p className="text-justify">Node.js is an open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside of a web browser. Express.js is a web application framework for Node.js that provides a set of features to simplify the development of web and mobile applications.</p>
+                        </div>
+                    </div>
+                </div >
+                <div className="mt-10">
+                    <div className="mb-1 flex">
+                        <h1 className="text-xl font-bold mr-3">Q4.</h1>
+                        <h1 className="text-xl font-bold">What is a custom hook, and why will you create a custom hook?</h1>
+                    </div>
+                    <div>
+                        <div className="flex">
+                            <p className="font-bold mr-3">Ans:</p>
+                            <p className="text-justify">Custom hooks are reusable functions that allow developers to add special and unique functionality to React applications. Custom hooks are like super-powered helper functions ⁽¹⁾ and can be used to solve problems that would otherwise require a third-party library</p>
                         </div>
                     </div>
                 </div >
