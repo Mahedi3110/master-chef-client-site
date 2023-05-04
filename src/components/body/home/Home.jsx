@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [chefData, setChefData] = useState([])
+    const [show, setShow] = useState(false)
     useEffect(() => {
         const fetchFunction = async () => {
             const res = await fetch(`https://chef-server-rouge.vercel.app/allChef`);
@@ -16,6 +17,9 @@ const Home = () => {
         }
         fetchFunction();
     }, [])
+    const showAll = () => {
+        setShow(!show)
+    }
     return (
         <div className='mt-20'>
             <div className='grid md:grid-cols-12'>
@@ -35,14 +39,25 @@ const Home = () => {
                 <h1 className='text-teal-700 font-bold text-4xl'>Meet Our Best Chef's</h1>
                 <p className='mt-3 text-gray-500'>Discover the world's top chefs and their signature dishes, from Massimo Bottura's contemporary Italian cuisine to <br /> Dominique Crenn's inventive French fare. Prepare to be amazed and delighted.</p>
                 <div className='grid md:grid-cols-3 grid-cols-1 gap-10 mt-16'>
-                    {
+                    {show ?
                         chefData.map(datas =>
+                            <Chef
+                                key={datas._id}
+                                data={datas}
+                            ></Chef>)
+                        :
+                        chefData.slice(0, 6).map(datas =>
                             <Chef
                                 key={datas._id}
                                 data={datas}
                             ></Chef>)
                     }
                 </div>
+                <button onClick={showAll} type="button" className="btn normal-case text-white bg-teal-600 hover:bg-teal-800 font-bold rounded-lg px-6 py-2 mr-3 md:mr-0 text-lg w-48 mb-8 mt-16">
+                    {
+                        show ? "Show less" : "Show more"
+                    }
+                </button>
             </div>
 
             <div className='bgImg h-screen bg-no-repeat bg-cover flex flex-col justify-center items-center text-center mt-20 px-10'>
